@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
@@ -29,4 +30,23 @@ export const StyledBtn = styled.button`
   margin-left: auto;
   margin-right: auto;
   justify-content: center;
+`;
+
+export const StyledLink = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 10px;
+  text-decoration: none;
+
+  margin-bottom: 40px;
+
+  border: 1px solid black;
+  width: 80px;
+  height: 30px;
+`;
+
+export const StyledLinkItem = styled(Link)`
+  text-decoration: none;
 `;

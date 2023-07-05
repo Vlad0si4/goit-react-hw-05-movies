@@ -10,6 +10,8 @@ import { fetchDetailMoviesInform } from 'services/theMoviesApi';
 import {
   StyledImages,
   StyledItem,
+  StyledLink,
+  StyledLinkItem,
   StyledTitle,
   Wrapper,
 } from './MoviesDetails.styled';
@@ -31,10 +33,12 @@ const MoviesDetails = () => {
 
   return (
     <>
-      <div></div>
       <Wrapper>
-        <Link to={location?.state?.from || '/'}>Go back</Link>
-
+        <StyledLink>
+          <StyledLinkItem to={location?.state?.from || '/'}>
+            Go back
+          </StyledLinkItem>
+        </StyledLink>
         <StyledImages
           src={
             poster_path

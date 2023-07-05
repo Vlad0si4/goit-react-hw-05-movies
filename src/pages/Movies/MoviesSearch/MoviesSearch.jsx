@@ -7,21 +7,24 @@ import { Btn, Form, Input } from './MoviesSearch.styled';
 
 const MoviesSearch = () => {
   const [value, setValue] = useState('');
+  const [data, setData] = useState([]);
+
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') ?? '';
 
   useEffect(() => {
-    try {
-      // const query = searchParams.get('query') ?? '';
-      fetchMoviesSearch(query).then(res => setValue(res));
-
-      if (!query) {
-        return;
-      }
-    } catch (error) {
-      console.log(error);
+    if (!query) {
+      return;
     }
-  }, [searchParams]);
+    fetchMoviesSearch(query)
+      .then(res => {
+        if (!res.length) {
+          toast.warning('This not a movies');
+        }
+        setData(res);
+      })
+      .catch(error => console.log(error));
+  }, [query]);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -40,7 +43,7 @@ const MoviesSearch = () => {
       <Form onSubmit={handleSubmit}>
         <Input
           type="text"
-          value={value.target}
+          value={value}
           onChange={e => {
             setValue(e.target.value);
           }}
@@ -48,7 +51,7 @@ const MoviesSearch = () => {
         <Btn>Search</Btn>
       </Form>
 
-      {value && <MoviesItem arr={value} />}
+      {data && <MoviesItem arr={data} />}
 
       <Outlet />
     </>

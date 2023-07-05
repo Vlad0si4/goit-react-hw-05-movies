@@ -4,15 +4,14 @@ export const Form = styled.form`
   display: flex;
   flex-direction: row-reverse;
   width: 500px;
-  margin: 0 auto;
-  // margin-bottom: 40px;
+  margin: 40px auto;
 `;
 
 export const Btn = styled.button`
   display: flex;
   align-items: center;
 
-  // margin-left: 15px;
+  margin-right: 15px;
 
   background-color: white;
   cursor: pointer;
