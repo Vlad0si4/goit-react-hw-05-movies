@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {
-  Link,
-  NavLink,
-  Outlet,
-  useLocation,
-  useParams,
-} from 'react-router-dom';
+import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
 import { fetchDetailMoviesInform } from 'services/theMoviesApi';
 import {
   StyledImages,
