@@ -9,6 +9,7 @@ import {
   Title,
   Wrapper,
 } from './Categories.styled';
+import PropTypes from 'prop-types';
 
 const Categories = () => {
   const location = useLocation();
@@ -53,3 +54,12 @@ const Categories = () => {
 };
 
 export default Categories;
+
+Categories.propTypes = {
+  trendMovies: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    title: PropTypes.isRequired,
+    poster_path: PropTypes.isRequired,
+  }),
+};

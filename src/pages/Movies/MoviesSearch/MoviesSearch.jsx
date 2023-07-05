@@ -4,6 +4,7 @@ import { fetchMoviesSearch } from 'services/theMoviesApi';
 import MoviesItem from '../../../components/MoviesItem/MoviesItem';
 import { toast } from 'react-toastify';
 import { Btn, Form, Input } from './MoviesSearch.styled';
+import PropTypes from 'prop-types';
 
 const MoviesSearch = () => {
   const [value, setValue] = useState('');
@@ -59,3 +60,12 @@ const MoviesSearch = () => {
 };
 
 export default MoviesSearch;
+
+MoviesSearch.propTypes = {
+  reviews: PropTypes.shape({
+    value: PropTypes.string.isRequired,
+    data: PropTypes.arrayOf({
+      query: PropTypes.string.isRequired,
+    }),
+  }),
+};

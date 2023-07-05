@@ -8,6 +8,7 @@ import {
   Title,
   Wrapper,
 } from './MoviesItem.Styled';
+import PropTypes from 'prop-types';
 
 const MoviesItem = ({ arr }) => {
   const location = useLocation();
@@ -44,3 +45,14 @@ const MoviesItem = ({ arr }) => {
 };
 
 export default MoviesItem;
+
+MoviesItem.propTypes = {
+  arr: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string,
+      title: PropTypes.string.isRequired,
+      poster_path: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};

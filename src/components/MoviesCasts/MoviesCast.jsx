@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchMoviesCast } from 'services/theMoviesApi';
 import { StyledImages, StyledItem, Title, Wrapper } from './MoviesCast.styled';
+import PropTypes from 'prop-types';
 
 const MoviesCast = () => {
   const { id } = useParams();
@@ -39,3 +40,12 @@ const MoviesCast = () => {
 };
 
 export default MoviesCast;
+
+MoviesCast.propTypes = {
+  casts: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    title: PropTypes.isRequired,
+    profile_path: PropTypes.isRequired,
+  }),
+};

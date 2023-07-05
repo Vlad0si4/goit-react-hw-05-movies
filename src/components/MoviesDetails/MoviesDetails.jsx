@@ -9,6 +9,7 @@ import {
   StyledTitle,
   Wrapper,
 } from './MoviesDetails.styled';
+import PropTypes from 'prop-types';
 
 const MoviesDetails = () => {
   const { id } = useParams();
@@ -59,3 +60,14 @@ const MoviesDetails = () => {
 };
 
 export default MoviesDetails;
+
+MoviesDetails.propTypes = {
+  inform: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    profile_path: PropTypes.string.isRequired,
+    vote_average: PropTypes.number.isRequired,
+    genres: PropTypes.string.isRequired,
+  }),
+};
