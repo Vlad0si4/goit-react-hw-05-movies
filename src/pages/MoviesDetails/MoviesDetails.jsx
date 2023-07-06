@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
 
 const MoviesDetails = () => {
   const { id } = useParams();
-  const [inform, setInform] = useState({});
+  const [inform, setInform] = useState(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -23,7 +23,9 @@ const MoviesDetails = () => {
       console.log(error);
     }
   }, [id]);
-
+  if (!inform) {
+    return;
+  }
   const { poster_path, title, vote_average, overview, genres } = inform;
 
   return (

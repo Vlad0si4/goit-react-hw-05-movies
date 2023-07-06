@@ -35,6 +35,7 @@ const MoviesCast = () => {
             </li>
           ))}
       </StyledItem>
+      {casts.length === 0 && <p>We don't have any cast for this movie</p>}
     </Wrapper>
   );
 };

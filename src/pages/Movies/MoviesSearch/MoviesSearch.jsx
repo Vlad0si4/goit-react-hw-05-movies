@@ -3,13 +3,12 @@ import { Outlet, useSearchParams } from 'react-router-dom';
 import { fetchMoviesSearch } from 'services/theMoviesApi';
 import MoviesItem from '../../../components/MoviesItem/MoviesItem';
 import { toast } from 'react-toastify';
-import { Btn, Form, Input } from './MoviesSearch.styled';
+
 import PropTypes from 'prop-types';
+import SearchForm from 'components/SearchForm/SearchForm';
 
 const MoviesSearch = () => {
-  const [value, setValue] = useState('');
   const [data, setData] = useState([]);
-
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') ?? '';
 
@@ -27,31 +26,12 @@ const MoviesSearch = () => {
       .catch(error => console.log(error));
   }, [query]);
 
-  const handleSubmit = event => {
-    event.preventDefault();
-
-    if (value === '') {
-      return toast.info(
-        'Sorry, but the search field cannot be empty, please enter your query'
-      );
-    }
-
-    setSearchParams(value ? { query: value } : {});
-    setValue('');
+  const handleSubmit = query => {
+    setSearchParams({ query });
   };
   return (
     <>
-      <Form onSubmit={handleSubmit}>
-        <Input
-          type="text"
-          value={value}
-          onChange={e => {
-            setValue(e.target.value);
-          }}
-        ></Input>
-        <Btn>Search</Btn>
-      </Form>
-
+      <SearchForm onSubmit={handleSubmit} />
       {data && <MoviesItem arr={data} />}
 
       <Outlet />
